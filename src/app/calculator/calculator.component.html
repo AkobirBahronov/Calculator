@@ -1,0 +1,15 @@
+<div class="calculator">
+    <text-box-component (computeResult)="computeResult($event)" (showHistory)="showHistory()"
+        (setValue)='setValue($event)'></text-box-component>
+    <toast-component></toast-component>
+
+    <div class="actions" *ngFor="let actions of actionList">
+        <span class="actions" *ngFor="let action of actions">
+            <button-component [val]='action' [inputValue]='value' (setInputValue)='updateInputValue($event)'
+                (computeResult)='computeResult($event)'>
+            </button-component>
+        </span>
+    </div>
+    <history-component [dataSource]='history' (updateInputField)='updateInputValueFromHistory($event)'>
+    </history-component>
+</div>
